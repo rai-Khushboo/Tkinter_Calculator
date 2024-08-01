@@ -5,12 +5,11 @@ def click(event):
     text= event.widget.cget("text")
     print(text)
     if text == "=":
-        if scvalue.get().isdigit():
-            value = int(scvalue.get())
-        else:
-            value = eval(screen.get())
-        scvalue.set(value)
-        screen.update()
+        try:
+            value = eval(scvalue.get())
+            scvalue.set(value)
+        except Exception as e:
+            scvalue.set("Error")
         
     elif text == "C":
         scvalue.set("")
